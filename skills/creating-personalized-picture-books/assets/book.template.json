@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "interior_pages": 24,
+  "trim_mm": 230,
+  "bleed_mm": 3,
+  "safe_mm": 14,
+  "printer_profile_confirmed": false,
+  "color_profile": null,
+  "binding": null,
+  "in_image_text_reviewed": false,
+  "artwork": [
+    {"id": "front", "kind": "single", "file": "assets/front.png", "expected_text": []},
+    {"id": "P01", "kind": "single", "file": "assets/P01.png", "expected_text": []},
+    {"id": "spread_01", "kind": "spread", "file": "assets/spread_01.png", "expected_text": []},
+    {"id": "spread_02", "kind": "spread", "file": "assets/spread_02.png", "expected_text": []},
+    {"id": "spread_03", "kind": "spread", "file": "assets/spread_03.png", "expected_text": []},
+    {"id": "spread_04", "kind": "spread", "file": "assets/spread_04.png", "expected_text": []},
+    {"id": "spread_05", "kind": "spread", "file": "assets/spread_05.png", "expected_text": []},
+    {"id": "spread_06", "kind": "spread", "file": "assets/spread_06.png", "expected_text": []},
+    {"id": "spread_07", "kind": "spread", "file": "assets/spread_07.png", "expected_text": []},
+    {"id": "spread_08", "kind": "spread", "file": "assets/spread_08.png", "expected_text": []},
+    {"id": "spread_09", "kind": "spread", "file": "assets/spread_09.png", "expected_text": []},
+    {"id": "spread_10", "kind": "spread", "file": "assets/spread_10.png", "expected_text": []},
+    {"id": "spread_11", "kind": "spread", "file": "assets/spread_11.png", "expected_text": []},
+    {"id": "P24", "kind": "single", "file": "assets/P24.png", "expected_text": []},
+    {"id": "back", "kind": "single", "file": "assets/back.png", "expected_text": []}
+  ]
+}

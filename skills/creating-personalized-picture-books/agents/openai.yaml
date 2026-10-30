@@ -1,0 +1,3 @@
+interface:  default_prompt: "使用 $creating-personalized-picture-books，把现有故事、插画与参考制作成完整绘本，并交付预览、源文件和真实质检报告。"
+  display_name: "个性化绘本制作"
+  short_description: "儿童个性化绘本制作与升级：角色一致、图文同生、中文校对及印刷质检"

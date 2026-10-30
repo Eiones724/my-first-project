@@ -1,0 +1,4 @@
+Pillow>=10
+PyMuPDF>=1.24
+reportlab>=4
+pypdf>=5
