@@ -15,6 +15,10 @@ book.json参数是方形成品trim_mm=230、bleed_mm=3、safe_mm=14。artwork依
 
 默认24内页：P01独立右页，P02–23为11跨页，P24独立左页；合并单页26页，预览15画布。其他偶数页数按同一首尾规则。工具输出print.pdf、interior_print.pdf、covers_print.pdf、preview.pdf和qa/export_manifest.json；仅页码为10pt独立嵌入文字，不把图中文字转成字体。
 
+24页与230mm是装订模板默认值，不是新订单的固定要求。已有工程沿用自己的构建器，不重新init或自动改数据结构。书稿正文有独立权威来源时，把当前逐字文字同步到expected_text；装订工具不会替执行者发现个人资料、故事或角色规范的变更，先按 [revision-and-resume.md](revision-and-resume.md) 完成变更影响核对。
+
+随附装订器当前只支持偶数内页、方形开本、项目assets内的PNG和single/spread两类素材，并自动添加10pt页码；不能把“可调默认值”理解为支持任意长方形、无页码或其他图片格式。这类要求沿用已有工程构建器或另行实现，并验证实际导出，不用修改技能说明冒称脚本已支持。
+
 ## 分辨率与出血
 
 有效PPI由实际像素/放置英寸决定。裁切看不见的部分不会增加原生细节；放大后写300DPI元数据也不合格。有重采样须记录原图尺寸与处理，不能只查放大后文件。
@@ -31,7 +35,7 @@ text_check.py保存识别框、置信度、预期文案、源图和文案哈希�
 
 疑点查看原图，记录文字、结论、源图SHA和文案SHA。任一变更使旧复核失效。不要为迎合OCR改正确人名；若决定改文案，同步脚本和重新检查。
 
-人工记录写入qa/text_review.json的reviews数组，每图一条：id、image_sha256、expected_text_sha256、visual_review_completed=true、confirmed_text_error=false。两个哈希应采用text_check.py输出；另记录具体检查结论。确为无字页时额外声明wordless=true，不把尚未填写文案当作无字设计。全局in_image_text_reviewed只有在逐图当前记录齐全后才可打开。check会重新核对哈希，不能靠全局开关绕过。
+逐图目检记录写入qa/text_review.json的reviews数组，每图一条：id、image_sha256、expected_text_sha256、visual_review_completed=true、confirmed_text_error=false。两个哈希应采用text_check.py输出；另记录检查者类型、观察依据和具体结论。模型查看可记录为模型目检，不能冒称用户或人类验收；脚本不验证检查者身份，visual_review_completed也不是人类签字凭证。确为无字页时额外声明wordless=true，不把尚未填写文案当作无字设计。全局in_image_text_reviewed只有在逐图当前记录齐全后才可打开。check会重新核对哈希，不能靠全局开关绕过。
 
 检测框换成毫米后分别分配到左右成品页，测外缘和中缝。草地误识成文字的假框可人工排除，但保留原OCR和分类证据；不以一个全局“已检查”替代逐项证据。
 
@@ -41,4 +45,10 @@ text_check.py保存识别框、置信度、预期文案、源图和文案哈希�
 
 check成功只是所填标准和参数下的数字预检。只有当前文字已复核、印厂配置确认、实际PPI达标且技术一致时才可通过；修改图或PDF后重跑。色彩说明字符串不是ICC转换，不据此声称CMYK/PDF-X。实体签样与最终生产仍由印厂确认。
 
+check退出码2时分别查看technical_consistent与print_ready及具体原因；不能一律解释为数字PDF交付失败。当前脚本以300PPI作固定印刷门槛，未自动适配印厂的其他标准。仅分辨率或印厂参数造成的印刷阻断应如实保留，已经完成内容、视觉与文件核验的屏幕阅读版仍可交付。
+
 质量报告逐项列通过、未通过、未检查及原因，注明文字模式、可编辑范围、原生PPI和待定印厂项。成品、源图、脚本、角色卡和修改记录都须实际存在。ZIP关闭写句柄后重新打开校验完整性。
+
+将工程检查、内容/图文检查、视觉检查和用户验收分别记录；缺少观察依据的项目保持未检查。模型目检不能写成人工或用户批准，脚本通过也不能证明人物、故事或生成中文正确。模型/工具兼容性证据按 [model-and-tools.md](model-and-tools.md) 单独说明。
+
+数字阅读、翻页HTML、EPUB或朗读版仅按当前交付需求制作，复用已审核插画和正文；随附脚本不含这些导出器。选当前可用工具实现后实际打开验证页序、文字与音画对应，不把浏览器语音存在当作离线朗读保证。
