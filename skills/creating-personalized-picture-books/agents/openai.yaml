@@ -1,0 +1,3 @@
+interface:  default_prompt: "使用 $creating-personalized-picture-books，结合宝宝资料与现有故事或参考制作、续做或局部修改定制绘本，并交付成品、源文件和可复核的质量报告。"
+  display_name: "个性化绘本制作"
+  short_description: "定制儿童绘本：姓名故事、角色连续、局部返修、图文校对与印刷交付"
